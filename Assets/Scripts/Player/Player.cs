@@ -9,12 +9,9 @@ public class Player : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
-        Vector2 movement = new Vector2(moveHorizontal, moveVertical).normalized;
-        transform.Translate(movement * speed * Time.deltaTime);
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        movement = movement.normalized;
 
-        if (movement != Vector2.zero)
-        {
-            EventManager.RaisePlayerMove(movement);
-        }
+        transform.Translate(movement * speed * Time.deltaTime);
     }
 }
